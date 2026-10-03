@@ -1,0 +1,50 @@
+local Xyloria = loadstring(game:HttpGet("https://raw.githubusercontent.com/YOURUSER/YOURREPO/main/Xyloria.lua"))()
+
+local Window = Xyloria:CreateWindow({
+	Title = "xyloria",
+	Theme = "Teal",
+})
+
+local Main = Window:CreateTab("Main")
+Main:CreateSection("Combat")
+Main:CreateToggle("Feature 1")
+Main:CreateToggle("Feature 2")
+Main:CreateToggle("Feature 3")
+Main:CreateSection("Movement")
+Main:CreateToggle("Feature 4")
+Main:CreateToggle("Feature 5")
+
+local Visuals = Window:CreateTab("Visuals")
+Visuals:CreateSection("Overlay")
+Visuals:CreateToggle("Feature 6")
+Visuals:CreateToggle("Feature 7")
+Visuals:CreateSlider("Field Of View", 30, 120, 70)
+Visuals:CreateSlider({ Name = "Opacity", Min = 0, Max = 1, Default = 0.5, Increment = 0.05 })
+
+local Misc = Window:CreateTab("Misc")
+Misc:CreateSection("Extras")
+Misc:CreateToggle("Feature 8")
+Misc:CreateToggle("Feature 9")
+Misc:CreateDropdown("Mode", { "Normal", "Fast", "Safe", "Custom" }, "Normal")
+Misc:CreateTextbox("Name", "", "type here")
+Misc:CreateKeybind("Keybind", "E")
+
+local Settings = Window:CreateTab("Settings")
+Settings:CreateSection("Interface")
+Settings:CreateDropdown({
+	Name = "Theme",
+	Options = { "Teal", "Ocean", "Mint", "Violet", "Rose" },
+	Default = "Teal",
+	Callback = function(name)
+		Window:SetTheme(name)
+	end,
+})
+Settings:CreateButton("Test Notification", function()
+	Window:Notify("xyloria", "Notifications are working.", 4)
+end)
+Settings:CreateButton("Unload UI", function()
+	Window:Close()
+end)
+Settings:CreateLabel("Press RightShift to minimize or restore the window.")
+
+Window:Notify("xyloria", "Interface loaded.", 3)
